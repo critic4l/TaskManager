@@ -10,4 +10,10 @@ body,
 app-root {
     height: 100%;
     margin: 0;
+    min-width: 320px;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
 }
