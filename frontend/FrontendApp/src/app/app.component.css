@@ -1,16 +1,16 @@
 .navbar {
+    height: 40px;
+    background-color: #2967c4;
     display: flex;
     flex-direction: row;
     align-items: center;
-    min-height: 40px;
-    background-color: #2967c4;
-    padding: 0 1% 0 1%;
-    box-shadow: 0 5px 5px rgba(90, 90, 90, 0.4);
+    padding: 1%;
+    box-sizing: border-box;
 }
 
 .content {
-    display: flex;
-    margin: 1%;
-    flex: 1 0 auto;
-    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1%;
 }
