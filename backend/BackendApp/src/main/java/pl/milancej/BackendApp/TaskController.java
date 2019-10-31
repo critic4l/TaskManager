@@ -24,8 +24,4 @@ public class TaskController {
         return null;
     }
 
-    @GetMapping(path = "/getTask")
-    public @ResponseBody Map<String, Object> getTaskByName(@RequestParam String name) {
-        return null;
-    }
 }

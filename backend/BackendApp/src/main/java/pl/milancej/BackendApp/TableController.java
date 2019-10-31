@@ -3,9 +3,9 @@ package pl.milancej.BackendApp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import pl.milancej.BackendApp.mappers.TableMapper;
 
 import java.util.List;
 import java.util.Map;
@@ -25,11 +25,7 @@ public class TableController {
     }
 
     @GetMapping(path = "/getTableByName")
-    public @ResponseBody
-    List<Map<String, Object>> getTableByName(@RequestParam String name) {
-        return jdbcTemplate.queryForList("SELECT name, description FROM task_table WHERE name = :name",
-                new MapSqlParameterSource()
-                        .addValue("name", name)
-        );
+    public @ResponseBody Object getTableByName(@RequestParam String name) {
+        return jdbcTemplate.queryForObject("SELECT * FROM task_table WHERE name=?", new Object[]{ name }, new TableMapper());
     }
 }
