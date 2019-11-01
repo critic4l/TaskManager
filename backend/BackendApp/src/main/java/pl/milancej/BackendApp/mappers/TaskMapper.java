@@ -6,9 +6,9 @@ import pl.milancej.BackendApp.entities.Task;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class TaskMapper implements RowMapper {
+public class TaskMapper implements RowMapper<Task> {
     @Override
-    public Object mapRow(ResultSet resultSet, int i) throws SQLException {
+    public Task mapRow(ResultSet resultSet, int i) throws SQLException {
         Task task = new Task();
         task.setId(resultSet.getLong("id"));
         task.setTable_id(resultSet.getLong("table_id"));
