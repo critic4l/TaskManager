@@ -1,5 +1,15 @@
 .table {
   min-width: 320px;
-  height: 600px;
   background-color: burlywood;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-content {
+  flex: 1;
+}
+
+
+.item-margin {
+  margin: 5px 5px;
 }

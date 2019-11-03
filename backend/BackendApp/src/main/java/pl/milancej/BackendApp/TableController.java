@@ -10,8 +10,7 @@ import pl.milancej.BackendApp.mappers.TableMapper;
 import java.util.List;
 import java.util.Map;
 
-@RestController
-@CrossOrigin(origins = {"http://localhost:4200", "http://someserver:5555"})
+@Controller
 @RequestMapping(path = "/table")
 public class TableController {
 
@@ -36,5 +35,11 @@ public class TableController {
     @PostMapping(path = "/createTable")
     public void createTable(@RequestParam String name, @RequestParam String description) {
         jdbcTemplate.update(String.format("INSERT INTO `%s` (name, description) VALUES (?,?)", TABLE_NAME), name, description);
+    }
+
+    @GetMapping(path = "/getTasksFromTable")
+    public @ResponseBody
+    List<Map<String, Object>> getTasksInTable(@RequestParam int tableId) {
+        return jdbcTemplate.queryForList("SELECT * FROM task INNER JOIN task_table ON task.table_id = task_table.id WHERE task.table_id = (?)", tableId);
     }
 }

@@ -2,8 +2,8 @@
         <Button>XD</Button>
 </div>
 <div class="tables" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
-    <div class="singleTable" *ngFor="let table of tables" cdkDrag>
-        <app-table></app-table>
+    <div class="singleTable" *ngFor="let table of tables; let i = index" cdkDrag>
+        <app-table id="{{'draggableTable-'+i}}" [tableInfo]="table"></app-table>
     </div>
 </div>
 

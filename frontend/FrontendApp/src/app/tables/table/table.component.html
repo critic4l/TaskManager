@@ -1,4 +1,13 @@
 <div class="table">
-    table works!
-    {{dupa}}
+    <div class="table-name item-margin">
+        {{tableInfo.name}}
+    </div>
+    <div class="table-content item-margin">
+        <div *ngFor="let item of res" style="margin-bottom: 5px;">
+            {{item.title}}, {{item.description}}
+        </div>
+    </div>
+    <div class="table-controls item-margin">
+        Add new task
+    </div>
 </div>

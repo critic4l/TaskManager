@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ComponentFactoryResolver } from '@angular/core';
+import { TablesService } from '../tables.service';
 
 @Component({
   selector: 'app-table',
@@ -9,9 +10,20 @@ export class TableComponent implements OnInit {
 
   protected dupa = Math.random();
 
-  constructor() { }
+  @Input()
+  tableInfo: object;
+  res;
+
+  constructor(private service: TablesService) { }
 
   ngOnInit() {
+    console.log(this.tableInfo);
+    this.service.getTasksFromTable(this.tableInfo.id).subscribe(
+      (res) => {console.log(res); this.res = res;},
+      (err) => {console.log(err);},
+      () => {console.log("XD");}
+    )
+  
   }
 
 }

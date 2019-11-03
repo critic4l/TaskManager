@@ -15,4 +15,9 @@ export class TablesService {
     const URL = this.URL + '/getAllTables';
     return this.http.get(URL);
   }
+
+  getTasksFromTable(tableId: number) {
+    const URL = this.URL + '/getTasksFromTable?tableId=' + tableId;
+    return this.http.get(URL);
+  }
 }
