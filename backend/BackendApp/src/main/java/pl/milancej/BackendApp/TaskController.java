@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5555")
+@CrossOrigin(origins = {"http://localhost:4200", "http://someserver:5555"})
 @RequestMapping(path = "/task")
 public class TaskController {
 

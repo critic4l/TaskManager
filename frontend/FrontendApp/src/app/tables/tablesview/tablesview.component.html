@@ -1,1 +1,9 @@
-<p>tablesview works!</p>
+<div class="tables-controls">
+        <Button>XD</Button>
+</div>
+<div class="tables" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+    <div class="singleTable" *ngFor="let table of tables" cdkDrag>
+        <app-table></app-table>
+    </div>
+</div>
+

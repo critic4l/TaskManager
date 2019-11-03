@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
+  protected dupa = Math.random();
+
   constructor() { }
 
   ngOnInit() {

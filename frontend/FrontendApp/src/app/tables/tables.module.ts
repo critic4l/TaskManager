@@ -7,17 +7,19 @@ import { TableComponent } from './table/table.component';
 import { TablesService } from './tables.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TablesResolver } from './tables.resolver';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 @NgModule({
   declarations: [
     TablesviewComponent,
-    TableComponent
+    TableComponent,
   ],
   imports: [
     CommonModule,
     TablesRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule
   ],
   providers: [
     TablesService,
