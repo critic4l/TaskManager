@@ -17,7 +17,6 @@ export class TableComponent implements OnInit {
   constructor(private service: TablesService) { }
 
   ngOnInit() {
-    console.log(this.tableInfo);
     this.service.getTasksFromTable(this.tableInfo.id).subscribe(
       (res) => { this.res = res; },
       (err) => { console.log(err); }
