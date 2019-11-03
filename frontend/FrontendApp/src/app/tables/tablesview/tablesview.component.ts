@@ -12,14 +12,6 @@ export class TablesviewComponent implements OnInit {
 
   protected tables: JSON[];
 
-  timePeriods = [
-    'Bronze age',
-    'Iron age',
-    'Middle ages',
-    'Early modern period',
-    'Long nineteenth century'
-  ];
-
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
