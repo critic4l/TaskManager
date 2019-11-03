@@ -12,18 +12,17 @@ export class TableComponent implements OnInit {
 
   @Input()
   tableInfo: object;
-  res;
+  res: object;
 
   constructor(private service: TablesService) { }
 
   ngOnInit() {
     console.log(this.tableInfo);
     this.service.getTasksFromTable(this.tableInfo.id).subscribe(
-      (res) => {console.log(res); this.res = res;},
-      (err) => {console.log(err);},
-      () => {console.log("XD");}
-    )
-  
+      (res) => { this.res = res; },
+      (err) => { console.log(err); }
+    );
+
   }
 
 }
