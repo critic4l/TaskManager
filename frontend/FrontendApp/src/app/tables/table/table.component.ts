@@ -30,7 +30,7 @@ export class TableComponent implements OnInit {
 
 
   drop(event: CdkDragDrop<string[]>) {
-    console.log(event.item);
+    console.log(event);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -39,6 +39,10 @@ export class TableComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
+  }
+
+  addNewTask() {
+    console.log('add new task');
   }
 
 }

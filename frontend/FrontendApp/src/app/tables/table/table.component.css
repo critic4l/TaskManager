@@ -14,6 +14,10 @@
   margin: 5px 5px;
 }
 
+.table-controls:hover {
+  text-decoration: underline;
+}
+
 .cdk-drag-preview {
   border-radius: 4px;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
