@@ -25,12 +25,10 @@ export class TableComponent implements OnInit {
       (res) => { this.res = res[0]; },
       (err) => { console.log(err); },
     );
-    console.log(this.connectedLists);
   }
 
 
   drop(event: CdkDragDrop<string[]>) {
-    console.log(event);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
