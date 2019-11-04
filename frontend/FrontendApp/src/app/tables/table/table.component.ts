@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, Input, ComponentFactoryResolver, AfterContentInit, AfterViewInit } from '@angular/core';
 import { TablesService } from '../tables.service';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-table',
@@ -8,20 +9,36 @@ import { TablesService } from '../tables.service';
 })
 export class TableComponent implements OnInit {
 
-  protected dupa = Math.random();
+  @Input()
+  tableInfo;
 
   @Input()
-  tableInfo: object;
-  res: object;
+  connectedLists: string[];
+
+  res;
+
 
   constructor(private service: TablesService) { }
 
   ngOnInit() {
     this.service.getTasksFromTable(this.tableInfo.id).subscribe(
-      (res) => { this.res = res; },
-      (err) => { console.log(err); }
+      (res) => { this.res = res[0]; },
+      (err) => { console.log(err); },
     );
+    console.log(this.connectedLists);
+  }
 
+
+  drop(event: CdkDragDrop<string[]>) {
+    console.log(event.item);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
   }
 
 }

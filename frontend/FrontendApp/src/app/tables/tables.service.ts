@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { toArray } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,6 @@ export class TablesService {
 
   getTasksFromTable(tableId: number) {
     const URL = this.URL + '/getTasksFromTable?tableId=' + tableId;
-    return this.http.get(URL);
+    return this.http.get(URL).pipe(toArray());
   }
 }
