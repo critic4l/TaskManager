@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Table } from '../classes/table';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class TablesviewComponent implements OnInit {
 
-  protected tables: JSON[];
+  protected tables: Table[];
   protected dropListNames: string[] = [];
 
   constructor(private route: ActivatedRoute) { }
