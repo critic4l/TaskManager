@@ -1,17 +1,33 @@
 package pl.milancej.BackendApp.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+import java.util.List;
+
+
+@Entity
+@javax.persistence.Table(name = "TABLES")
 public class Table {
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("description")
     private String description;
 
+    @OneToMany(mappedBy = "table")
+    private List<Task> tasks;
 
-    public long getId() {
-        return id;
+    public Table() {
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Table(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
     public String getName() {
