@@ -44,6 +44,6 @@ public class TableController {
     @GetMapping(path = "/getTableById")
     public @ResponseBody
     Table getTableById(@RequestParam Integer id) {
-        return tableRepository.getOne(id);
+        return tableRepository.getTableById(id);
     }
 }

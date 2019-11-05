@@ -16,4 +16,6 @@ public interface TableRepository extends JpaRepository<Table, Integer> {
     void deleteTable(@Param("name") String name);
 
     Table getTableByName(String name);
+
+    Table getTableById(Integer id);
 }

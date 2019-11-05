@@ -15,21 +15,16 @@ import java.util.List;
 public class TaskController {
 
     @Autowired
+    private
     TaskRepository taskRepository;
 
     @Autowired
+    private
     TableRepository tableRepository;
 
     @PostMapping(path = "/createTask")
     public @ResponseBody
     Task createTask(@RequestBody TaskDTO taskDTO) {
-//          DTO or not
-//         PREF JSON INPUT :{
-//                "title": "testTask2",
-//                "description": "testTaskDescription",
-//                "tableId": 1
-//            }
-
         Task task = new Task();
         task.setTitle(taskDTO.getTitle());
         task.setDescription(taskDTO.getDescription());
@@ -45,8 +40,8 @@ public class TaskController {
 
     @GetMapping(path = "/getAllTasksByTableId")
     public @ResponseBody
-    List<Task> getAllTasksByTableId() {
-        return null;
+    List<Task> getAllTasksByTableId(Integer id) {
+        return taskRepository.getAllTasksByTableId(id);
     }
 
     @GetMapping(path = "/getTaskById")
