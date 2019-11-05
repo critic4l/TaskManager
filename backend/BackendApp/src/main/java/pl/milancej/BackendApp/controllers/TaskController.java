@@ -65,4 +65,9 @@ public class TaskController {
         task.setTable(tableRepository.getOne(taskDTO.getTableId()));
         return taskRepository.save(task);
     }
+
+    @DeleteMapping(path = "/deleteTask")
+    public void deleteTask(@RequestParam Integer id) {
+        taskRepository.deleteById(id);
+    }
 }

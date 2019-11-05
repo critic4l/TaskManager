@@ -19,7 +19,7 @@ public class Table {
     @JsonProperty("description")
     private String description;
 
-    @OneToMany(mappedBy = "table")
+    @OneToMany(mappedBy = "table", cascade = CascadeType.ALL)
     private List<Task> tasks;
 
     public Table() {

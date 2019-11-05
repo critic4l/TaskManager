@@ -20,7 +20,7 @@ public class Task {
     @JsonProperty("description")
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "table_id")
     private Table table;
