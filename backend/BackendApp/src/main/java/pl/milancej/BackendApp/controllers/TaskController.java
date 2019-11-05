@@ -22,20 +22,18 @@ public class TaskController {
 
     @PostMapping(path = "/createTask")
     public @ResponseBody
-    Task createTask(@RequestBody Task task) {
-        //  DTO or not
-        // PREF JSON INPUT :
-        /*  {
-                "title": "testTask2",
-                "description": "testTaskDescription",
-                "tableId": 1
-            }
+    Task createTask(@RequestBody TaskDTO taskDTO) {
+//          DTO or not
+//         PREF JSON INPUT :{
+//                "title": "testTask2",
+//                "description": "testTaskDescription",
+//                "tableId": 1
+//            }
 
-        */
-//        Task task = new Task();
-//        task.setTitle(taskDTO.getTitle());
-//        task.setDescription(taskDTO.getDescription());
-//        task.setTable(tableRepository.getOne(taskDTO.getTableId()));
+        Task task = new Task();
+        task.setTitle(taskDTO.getTitle());
+        task.setDescription(taskDTO.getDescription());
+        task.setTable(tableRepository.getOne(taskDTO.getTableId()));
         return taskRepository.save(task);
     }
 
@@ -58,7 +56,7 @@ public class TaskController {
         TaskDTO taskDTO = new TaskDTO();
         taskDTO.setTitle(task.getTitle());
         taskDTO.setDescription(task.getDescription());
-        //taskDTO.setTableId(task.getTable().);
+        taskDTO.setTableId(task.getTable().getId());
         return taskDTO;
     }
 }
