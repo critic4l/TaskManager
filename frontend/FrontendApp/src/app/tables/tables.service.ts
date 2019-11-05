@@ -18,7 +18,7 @@ export class TablesService {
   }
 
   getTasksFromTable(tableId: number) {
-    const URL = this.URL + '/getTasksFromTable?tableId=' + tableId;
+    const URL = 'http://localhost:8080/task/getAllTasksByTableId?id=' + tableId;
     return this.http.get(URL).pipe(toArray());
   }
 }
