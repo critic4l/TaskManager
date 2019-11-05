@@ -1,4 +1,4 @@
-package pl.milancej.BackendApp;
+package pl.milancej.BackendApp.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
