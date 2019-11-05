@@ -1,12 +1,13 @@
 package pl.milancej.BackendApp.entities;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 import javax.persistence.*;
 
 @Entity
 @javax.persistence.Table(name = "TASKS")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,6 +29,14 @@ public class Task {
     public Task(String title, String description) {
         this.title = title;
         this.description = description;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Table getTable() {

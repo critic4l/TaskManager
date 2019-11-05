@@ -40,4 +40,10 @@ public class TableController {
     Table getTableByName(@RequestParam String name) {
         return tableRepository.getTableByName(name);
     }
+
+    @GetMapping(path = "/getTableById")
+    public @ResponseBody
+    Table getTableById(@RequestParam Integer id) {
+        return tableRepository.getOne(id);
+    }
 }
