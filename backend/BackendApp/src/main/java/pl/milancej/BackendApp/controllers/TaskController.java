@@ -54,4 +54,15 @@ public class TaskController {
         taskDTO.setTableId(task.getTable().getId());
         return taskDTO;
     }
+
+    @PutMapping(path = "/updateTask")
+    public @ResponseBody
+    Task updateTAsk(@RequestBody TaskDTO taskDTO) {
+        Task task = new Task();
+        task.setId(taskDTO.getId());
+        task.setTitle(taskDTO.getTitle());
+        task.setDescription(taskDTO.getDescription());
+        task.setTable(tableRepository.getOne(taskDTO.getTableId()));
+        return taskRepository.save(task);
+    }
 }
