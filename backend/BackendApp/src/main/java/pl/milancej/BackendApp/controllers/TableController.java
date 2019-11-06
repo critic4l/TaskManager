@@ -30,7 +30,8 @@ public class TableController {
     }
 
     @DeleteMapping(path = "/deleteTable")
-    public @ResponseBody ResponseEntity deleteTable(@RequestParam Integer id) {
+    public @ResponseBody
+    ResponseEntity deleteTable(@RequestParam Integer id) {
         tableRepository.deleteById(id);
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -45,5 +46,10 @@ public class TableController {
     public @ResponseBody
     Table getTableById(@RequestParam Integer id) {
         return tableRepository.getTableById(id);
+    }
+
+    @PutMapping(path = "/updateTable")
+    public @ResponseBody Table updateTable(@RequestBody Table table) {
+        return tableRepository.save(table);
     }
 }
