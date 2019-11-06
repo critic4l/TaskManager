@@ -8,6 +8,7 @@ import { TablesService } from './tables.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TablesResolver } from './tables.resolver';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { TasksModule } from '../tasks/tasks.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     CommonModule,
     TablesRoutingModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    TasksModule
   ],
   providers: [
     TablesService,

@@ -29,7 +29,7 @@ export class TablesviewComponent implements OnInit {
   initDropListNames() {
     // tslint:disable-next-line: forin
     for (const t in this.tables) {
-      this.dropListNames.push('task-list' + this.tables[t].id);
+      this.dropListNames.push('' + this.tables[t].id);
     }
   }
 

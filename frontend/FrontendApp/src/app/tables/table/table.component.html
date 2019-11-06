@@ -2,10 +2,8 @@
     <div class="table-name item-margin">
         {{tableInfo.name}}
     </div>
-    <div class="table-content item-margin" id="task-list{{tableInfo.id}}" cdkDropList cdkDropListOrientation="vertical" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="connectedLists" [cdkDropListData]="res">
-        <div *ngFor="let item of res" style="margin-bottom: 5px; border: 2px solid black; padding: 5px" cdkDrag [cdkDragData]="item">
-            {{item.title}}, {{item.description}}
-        </div>
+    <div class="table-content" id="{{tableInfo.id}}" cdkDropList cdkDropListOrientation="vertical" (cdkDropListDropped)="drop($event, tableInfo)" [cdkDropListConnectedTo]="connectedLists" [cdkDropListData]="res">
+        <app-task *ngFor="let task of res" cdkDrag [cdkDragData]="task" [task]="task"></app-task>
     </div>
     <div class="table-controls item-margin" (click)="addNewTask()">
         Add new task

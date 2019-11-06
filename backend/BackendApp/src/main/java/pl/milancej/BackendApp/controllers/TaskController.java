@@ -11,6 +11,7 @@ import pl.milancej.BackendApp.repositories.TaskRepository;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "/task")
 public class TaskController {
 
@@ -57,12 +58,7 @@ public class TaskController {
 
     @PutMapping(path = "/updateTask")
     public @ResponseBody
-    Task updateTAsk(@RequestBody TaskDTO taskDTO) {
-        Task task = new Task();
-        task.setId(taskDTO.getId());
-        task.setTitle(taskDTO.getTitle());
-        task.setDescription(taskDTO.getDescription());
-        task.setTable(tableRepository.getOne(taskDTO.getTableId()));
+    Task updateTAsk(@RequestBody Task task) {
         return taskRepository.save(task);
     }
 
