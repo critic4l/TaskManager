@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TablesResolver } from './tables.resolver';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { TasksModule } from '../tasks/tasks.module';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 
 @NgModule({
@@ -21,11 +22,14 @@ import { TasksModule } from '../tasks/tasks.module';
     TablesRoutingModule,
     HttpClientModule,
     DragDropModule,
-    TasksModule
+    TasksModule,
   ],
   providers: [
     TablesService,
     TablesResolver
+  ],
+  exports: [
+    OverlayModule
   ]
 })
 export class TablesModule { }

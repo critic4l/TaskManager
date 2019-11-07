@@ -1,9 +1,12 @@
-import { Component, OnInit, Input, ComponentFactoryResolver, AfterContentInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ComponentFactoryResolver, AfterContentInit, AfterViewInit, ViewContainerRef } from '@angular/core';
 import { TablesService } from '../tables.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Table } from '../classes/table';
 import { Task } from 'src/app/tasks/classes/task';
 import { TaskService } from 'src/app/tasks/task.service';
+import {Overlay, OverlayOrigin, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
+import { TaskCreateComponent } from 'src/app/tasks/task-create/task-create.component';
+import { ComponentPortal } from '@angular/cdk/portal';
 
 @Component({
   selector: 'app-table',
@@ -21,7 +24,10 @@ export class TableComponent implements OnInit {
   res;
 
 
-  constructor(private tableService: TablesService, private taskService: TaskService) { }
+  constructor(private tableService: TablesService,
+              private taskService: TaskService,
+              private overlay: Overlay,
+              public viewContainerRef: ViewContainerRef) { }
 
   ngOnInit() {
     this.tableService.getTasksFromTable(this.tableInfo.id).subscribe(
@@ -44,7 +50,22 @@ export class TableComponent implements OnInit {
   }
 
   addNewTask() {
-    console.log('add new task');
+    const config = new OverlayConfig();
+
+    config.positionStrategy = this.overlay.position()
+        .global()
+        .centerHorizontally().centerVertically();
+
+
+    config.hasBackdrop = true;
+
+    const overlayRef = this.overlay.create(config);
+
+    overlayRef.backdropClick().subscribe(() => {
+      overlayRef.dispose();
+    });
+  
+    overlayRef.attach(new ComponentPortal(TaskCreateComponent, this.viewContainerRef));
   }
 
   updateTaskTable(task: Task, table: Table) {
