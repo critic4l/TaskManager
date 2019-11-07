@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, Input, AfterViewInit } from '@angular/core';
+import { Table } from 'src/app/tables/classes/table';
 
 @Component({
   selector: 'app-task-create',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskCreateComponent implements OnInit {
 
-  constructor() { }
+  table: Table;
+
+  constructor(@Inject('table') table) {
+    this.table = table.value;
+  }
 
   ngOnInit() {
+
+  }
+
+  createTask() {
+    console.log("test");
   }
 
 }

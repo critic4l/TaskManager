@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, ComponentFactoryResolver, AfterContentInit, AfterViewInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, Input, ComponentFactoryResolver, AfterContentInit, AfterViewInit, ViewContainerRef, Injector, ReflectiveInjector } from '@angular/core';
 import { TablesService } from '../tables.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Table } from '../classes/table';
 import { Task } from 'src/app/tasks/classes/task';
 import { TaskService } from 'src/app/tasks/task.service';
-import {Overlay, OverlayOrigin, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
+import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
 import { TaskCreateComponent } from 'src/app/tasks/task-create/task-create.component';
 import { ComponentPortal } from '@angular/cdk/portal';
 
@@ -15,6 +15,14 @@ import { ComponentPortal } from '@angular/cdk/portal';
 })
 export class TableComponent implements OnInit {
 
+
+  constructor(private tableService: TablesService,
+              private taskService: TaskService,
+              private overlay: Overlay,
+              public viewContainerRef: ViewContainerRef) { }
+
+  
+
   @Input()
   tableInfo: Table;
 
@@ -22,12 +30,6 @@ export class TableComponent implements OnInit {
   connectedLists: string[];
 
   res;
-
-
-  constructor(private tableService: TablesService,
-              private taskService: TaskService,
-              private overlay: Overlay,
-              public viewContainerRef: ViewContainerRef) { }
 
   ngOnInit() {
     this.tableService.getTasksFromTable(this.tableInfo.id).subscribe(
@@ -48,7 +50,7 @@ export class TableComponent implements OnInit {
                         event.currentIndex);
     }
   }
-
+  
   addNewTask() {
     const config = new OverlayConfig();
 
@@ -64,8 +66,17 @@ export class TableComponent implements OnInit {
     overlayRef.backdropClick().subscribe(() => {
       overlayRef.dispose();
     });
-  
-    overlayRef.attach(new ComponentPortal(TaskCreateComponent, this.viewContainerRef));
+
+    const injector: Injector = ReflectiveInjector.resolveAndCreate([
+      {
+        provide: 'table',
+        useValue: {
+          value: this.tableInfo
+        }
+      }
+    ]);
+
+    overlayRef.attach(new ComponentPortal(TaskCreateComponent, this.viewContainerRef, injector));
   }
 
   updateTaskTable(task: Task, table: Table) {
