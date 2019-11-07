@@ -8,11 +8,13 @@
 .table-content {
   flex: 1;
   min-height: 50px;
+  background-color: rgb(189, 157, 115);
+  border-radius: 5px;
 }
 
 
 .item-margin {
-  margin: 5px 5px;
+  margin: 5px 10px;
 }
 
 .table-controls:hover {
@@ -34,6 +36,6 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.tables.cdk-drop-list-dragging .singleTable:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+.tables.cdk-drop-list-dragging .singleItem:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 0.5);
 }

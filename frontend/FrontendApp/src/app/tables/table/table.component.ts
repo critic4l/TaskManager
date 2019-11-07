@@ -48,11 +48,11 @@ export class TableComponent implements OnInit {
   }
 
   updateTaskTable(task: Task, table: Table) {
-      task.table = table;
-      this.taskService.updateTask(task).subscribe(
-        (res) => { console.log(res); },
-        (err) => { console.log(err); },
-      );
+    task.table = table;
+    this.taskService.updateTask(task).subscribe(
+      (res) => { console.log(res); },
+      (err) => { console.log(err); },
+    );
   }
 
 }
