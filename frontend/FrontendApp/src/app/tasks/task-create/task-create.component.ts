@@ -27,7 +27,7 @@ export class TaskCreateComponent implements OnInit {
   createTask(taskForm: NgForm) {
     const taskToCreate = new Task(taskForm.value.taskTitle, taskForm.value.taskDescription, this.table);
     this.service.createTask(taskToCreate).subscribe(
-      (res) => { this.createTaskEvent.emit(); },
+      (res) => { this.createTaskEvent.emit(taskToCreate); },
       (err) => { console.log(err); },
     );
   }

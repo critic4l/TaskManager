@@ -81,9 +81,9 @@ export class TableComponent implements OnInit {
                                                                               injector));
     const taskCreateInstance: TaskCreateComponent = componentRef.instance;
     taskCreateInstance.createTaskEvent.subscribe(
-      () => {
+      (task) => {
          overlayRef.detach();
-         this.ngOnInit();
+         this.res.push(task);
       }
     )
   }
