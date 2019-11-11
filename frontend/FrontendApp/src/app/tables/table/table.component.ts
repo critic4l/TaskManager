@@ -79,7 +79,7 @@ export class TableComponent implements OnInit {
     const componentRef: ComponentRef<TaskCreateComponent> = overlayRef.attach(new ComponentPortal(TaskCreateComponent,
                                                                               this.viewContainerRef,
                                                                               injector));
-    const taskCreateInstance = componentRef.instance as TaskCreateComponent;
+    const taskCreateInstance: TaskCreateComponent = componentRef.instance;
     taskCreateInstance.createTaskEvent.subscribe(
       () => {
          overlayRef.detach();
