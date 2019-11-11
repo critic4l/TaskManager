@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ComponentFactoryResolver, AfterContentInit, AfterViewInit, ViewContainerRef, Injector, ReflectiveInjector } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef, Injector, ReflectiveInjector, ComponentRef } from '@angular/core';
 import { TablesService } from '../tables.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Table } from '../classes/table';
@@ -76,7 +76,16 @@ export class TableComponent implements OnInit {
       }
     ]);
 
-    overlayRef.attach(new ComponentPortal(TaskCreateComponent, this.viewContainerRef, injector));
+    const componentRef: ComponentRef<TaskCreateComponent> = overlayRef.attach(new ComponentPortal(TaskCreateComponent,
+                                                                              this.viewContainerRef,
+                                                                              injector));
+    const taskCreateInstance = componentRef.instance as TaskCreateComponent;
+    taskCreateInstance.createTaskEvent.subscribe(
+      () => {
+         overlayRef.detach();
+         this.ngOnInit();
+      }
+    )
   }
 
   updateTaskTable(task: Task, table: Table) {

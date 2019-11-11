@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Inject, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { Table } from 'src/app/tables/classes/table';
 import { Task } from '../classes/task';
 import { NgForm } from '@angular/forms';
@@ -13,6 +13,9 @@ export class TaskCreateComponent implements OnInit {
 
   protected table: Table;
 
+  @Output()
+  public createTaskEvent: EventEmitter<any> = new EventEmitter();
+
   constructor(@Inject('table') table, private service: TaskService) {
     this.table = table.value;
   }
@@ -22,11 +25,9 @@ export class TaskCreateComponent implements OnInit {
   }
 
   createTask(taskForm: NgForm) {
-    console.log(taskForm.value);
     const taskToCreate = new Task(taskForm.value.taskTitle, taskForm.value.taskDescription, this.table);
-    console.log(taskToCreate);
     this.service.createTask(taskToCreate).subscribe(
-      (res) => { console.log(res); },
+      (res) => { this.createTaskEvent.emit(); },
       (err) => { console.log(err); },
     );
   }
