@@ -5,4 +5,10 @@ export class Task {
     title: string;
     description: string;
     table: Table;
+
+    constructor(title: string, description: string, table: Table) {
+        this.title = title;
+        this.description = description;
+        this.table = table;
+    }
 }

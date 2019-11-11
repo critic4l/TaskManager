@@ -1,6 +1,6 @@
 .window {
-    height: 80vh;
-    width: 30vw;
+    height: 60vh;
+    width: 60vw;
     background-color: cornsilk;
     border-radius: 10px;
     user-select: none;
@@ -23,16 +23,13 @@
     padding: 5%;
 }
 
+.mat-spinner circle {
+    stroke: #ffffff;
+  }
+
 .createButton {
-	background-color:#59d179;
-	border-radius: 9px;
-	display: inline-block;
-	cursor: pointer;
-	color:#ffffff;
-	padding:15px 30px;
-    text-decoration:none;
-    user-select: none;
-    border: none;
+    background-color:#59d179;
+    color:#ffffff;
 }
 .createButton:hover {
 	background-color:#5cbf2a;

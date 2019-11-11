@@ -2,10 +2,14 @@
     <div class="window-title">
         CREATE NEW TASK IN TABLE: {{table.name}}
     </div>
-    <div class="window-content">
-        asdfaerb
-    </div>
-    <div class="window-controls">
-        <button (click)="createTask()" class="createButton">CREATE</button>
-    </div>
+    <form (ngSubmit)="createTask(taskForm)" #taskForm="ngForm">
+        <div class="window-content">
+            <input name="taskTitle" ngModel required minlength="3">
+            <textarea name="taskDescription" ngModel></textarea>
+        </div>
+        <div class="window-controls">
+            <button mat-button class="createButton">CREATE</button>
+        </div>
+    </form>
+    
 </div>

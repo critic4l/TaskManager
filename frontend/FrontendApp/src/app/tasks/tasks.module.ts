@@ -4,7 +4,8 @@ import { TaskComponent } from './task/task.component';
 import { TaskService } from './task.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskCreateComponent } from './task-create/task-create.component';
-
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import { TaskCreateComponent } from './task-create/task-create.component';
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    MatButtonModule,
   ],
   exports: [
     TaskComponent,

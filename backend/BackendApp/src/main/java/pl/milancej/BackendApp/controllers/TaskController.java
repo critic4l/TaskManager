@@ -25,11 +25,11 @@ public class TaskController {
 
     @PostMapping(path = "/createTask")
     public @ResponseBody
-    Task createTask(@RequestBody TaskDTO taskDTO) {
-        Task task = new Task();
-        task.setTitle(taskDTO.getTitle());
-        task.setDescription(taskDTO.getDescription());
-        task.setTable(tableRepository.getOne(taskDTO.getTableId()));
+    Task createTask(@RequestBody Task task) {
+//        Task task = new Task();
+//        task.setTitle(taskDTO.getTitle());
+//        task.setDescription(taskDTO.getDescription());
+//        task.setTable(tableRepository.getOne(taskDTO.getTableId()));
         return taskRepository.save(task);
     }
 

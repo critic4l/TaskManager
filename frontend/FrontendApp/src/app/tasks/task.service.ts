@@ -15,4 +15,9 @@ export class TaskService {
     const URL = this.URL + '/updateTask';
     return this.http.put(URL, task);
   }
+
+  createTask(task: Task) {
+    const URL = this.URL + '/createTask';
+    return this.http.post(URL, task);
+  }
 }
