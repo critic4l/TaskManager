@@ -10,12 +10,14 @@ import { TablesResolver } from './tables.resolver';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { TasksModule } from '../tasks/tasks.module';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { TableCreateComponent } from './table-create/table-create.component';
 
 
 @NgModule({
   declarations: [
     TablesviewComponent,
     TableComponent,
+    TableCreateComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,10 @@ import { OverlayModule } from '@angular/cdk/overlay';
     TablesResolver
   ],
   exports: [
-    OverlayModule
+
+  ],
+  entryComponents: [
+    TableCreateComponent
   ]
 })
 export class TablesModule { }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { toArray } from 'rxjs/operators';
+import { Table } from './classes/table';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,13 @@ export class TablesService {
     return this.http.get(URL);
   }
 
-  getTasksFromTable(tableId: number) {
+  getTasksFromTable(tableId: number): Observable<any> {
     const URL = 'http://localhost:8080/task/getAllTasksByTableId?id=' + tableId;
     return this.http.get(URL).pipe(toArray());
+  }
+
+  createTable(table: Table): Observable<any> {
+    const URL = this.URL + '/createTable';
+    return this.http.post(URL, table);
   }
 }

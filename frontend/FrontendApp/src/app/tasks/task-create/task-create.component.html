@@ -2,7 +2,7 @@
     <div class="window-title">
         CREATE NEW TASK IN TABLE: {{table.name}}
     </div>
-    <form (ngSubmit)="createTask(taskForm)" #taskForm="ngForm">
+    <form (ngSubmit)="createEntity(taskForm)" #taskForm="ngForm">
         <div class="window-content">
             <input name="taskTitle" ngModel required minlength="3">
             <textarea name="taskDescription" ngModel></textarea>

@@ -1,12 +1,11 @@
-import { Component, OnInit, Input, ViewContainerRef, Injector, ReflectiveInjector, ComponentRef } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef, Injector, ReflectiveInjector } from '@angular/core';
 import { TablesService } from '../tables.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Table } from '../classes/table';
 import { Task } from 'src/app/tasks/classes/task';
 import { TaskService } from 'src/app/tasks/task.service';
-import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
 import { TaskCreateComponent } from 'src/app/tasks/task-create/task-create.component';
-import { ComponentPortal } from '@angular/cdk/portal';
+import { OverlayServiceService } from 'src/app/shared/services/overlay-service.service';
 
 @Component({
   selector: 'app-table',
@@ -18,8 +17,8 @@ export class TableComponent implements OnInit {
 
   constructor(private tableService: TablesService,
               private taskService: TaskService,
-              private overlay: Overlay,
-              public viewContainerRef: ViewContainerRef) { }
+              private overlayService: OverlayServiceService,
+              private viewContainerRef: ViewContainerRef) { }
 
   
 
@@ -33,7 +32,9 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.tableService.getTasksFromTable(this.tableInfo.id).subscribe(
-      (res) => { this.res = res[0]; },
+      (res) => {
+        this.res = res[0];
+      },
       (err) => { console.log(err); },
     );
   }
@@ -50,23 +51,10 @@ export class TableComponent implements OnInit {
                         event.currentIndex);
     }
   }
-  
+
   addNewTask() {
-    const config = new OverlayConfig();
 
-    config.positionStrategy = this.overlay.position()
-        .global()
-        .centerHorizontally().centerVertically();
-
-
-    config.hasBackdrop = true;
-
-    const overlayRef = this.overlay.create(config);
-
-    overlayRef.backdropClick().subscribe(() => {
-      overlayRef.dispose();
-    });
-
+    // tslint:disable-next-line: deprecation
     const injector: Injector = ReflectiveInjector.resolveAndCreate([
       {
         provide: 'table',
@@ -76,16 +64,7 @@ export class TableComponent implements OnInit {
       }
     ]);
 
-    const componentRef: ComponentRef<TaskCreateComponent> = overlayRef.attach(new ComponentPortal(TaskCreateComponent,
-                                                                              this.viewContainerRef,
-                                                                              injector));
-    const taskCreateInstance: TaskCreateComponent = componentRef.instance;
-    taskCreateInstance.createTaskEvent.subscribe(
-      (task) => {
-         overlayRef.detach();
-         this.res.push(task);
-      }
-    )
+    this.overlayService.showEntityCreationOverlay(TaskCreateComponent, injector, this.res, this.viewContainerRef);
   }
 
   updateTaskTable(task: Task, table: Table) {

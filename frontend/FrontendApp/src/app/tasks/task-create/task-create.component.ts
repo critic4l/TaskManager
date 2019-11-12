@@ -3,31 +3,26 @@ import { Table } from 'src/app/tables/classes/table';
 import { Task } from '../classes/task';
 import { NgForm } from '@angular/forms';
 import { TaskService } from '../task.service';
+import { EntityCreateComponent } from 'src/app/shared/components/entity-create/entity-create.component';
 
 @Component({
   selector: 'app-task-create',
   templateUrl: './task-create.component.html',
   styleUrls: ['./task-create.component.css']
 })
-export class TaskCreateComponent implements OnInit {
+export class TaskCreateComponent extends EntityCreateComponent {
 
   protected table: Table;
 
-  @Output()
-  public createTaskEvent: EventEmitter<any> = new EventEmitter();
-
   constructor(@Inject('table') table, private service: TaskService) {
+    super();
     this.table = table.value;
   }
 
-  ngOnInit() {
-
-  }
-
-  createTask(taskForm: NgForm) {
-    const taskToCreate = new Task(taskForm.value.taskTitle, taskForm.value.taskDescription, this.table);
+  protected createEntity(form: NgForm): void {
+    const taskToCreate = new Task(form.value.taskTitle, form.value.taskDescription, this.table);
     this.service.createTask(taskToCreate).subscribe(
-      (res) => { this.createTaskEvent.emit(taskToCreate); },
+      (res) => { this.createEntityEvent.emit(taskToCreate); },
       (err) => { console.log(err); },
     );
   }

@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OverlayServiceService } from './shared/services/overlay-service.service';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { TablesModule } from './tables/tables.module';
 
 @NgModule({
   declarations: [
@@ -12,9 +15,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TablesModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    OverlayServiceService
+  ],
+  bootstrap: [
+    AppComponent
+  ],
+  exports: [
+    OverlayModule
+  ]
 })
 export class AppModule { }
