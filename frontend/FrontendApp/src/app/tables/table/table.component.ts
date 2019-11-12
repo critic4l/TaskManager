@@ -20,7 +20,7 @@ export class TableComponent implements OnInit {
               private overlayService: OverlayServiceService,
               private viewContainerRef: ViewContainerRef) { }
 
-  
+
 
   @Input()
   tableInfo: Table;

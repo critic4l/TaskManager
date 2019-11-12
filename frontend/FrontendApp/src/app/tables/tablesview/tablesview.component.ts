@@ -38,7 +38,7 @@ export class TablesviewComponent implements OnInit {
   }
 
   addNewTable() {
-    this.overlayService.showEntityCreationOverlay(TableCreateComponent, null, this.tables, this.viewContainerRef)
+    this.overlayService.showEntityCreationOverlay(TableCreateComponent, null, this.tables, this.viewContainerRef);
   }
 
 }
