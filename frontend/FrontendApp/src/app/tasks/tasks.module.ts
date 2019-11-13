@@ -17,7 +17,6 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     HttpClientModule,
     FormsModule,
-    MatButtonModule,
   ],
   exports: [
     TaskComponent,
