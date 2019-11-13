@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewContainerRef, Injector, ReflectiveInjector, AfterContentChecked, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef, Injector, ReflectiveInjector, AfterContentChecked, Output, EventEmitter } from '@angular/core';
 import { TablesService } from '../tables.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Table } from '../classes/table';
@@ -14,6 +14,9 @@ import { OverlayServiceService } from 'src/app/shared/services/overlay-service.s
 })
 export class TableComponent implements OnInit, AfterContentChecked {
 
+
+  @Output()
+  tableDestroyedEvent: EventEmitter<any> = new EventEmitter();
 
   constructor(private tableService: TablesService,
               private taskService: TaskService,
@@ -81,5 +84,6 @@ export class TableComponent implements OnInit, AfterContentChecked {
 
   removeTable() {
     this.tableService.deleteTable(this.tableInfo);
+    this.tableDestroyedEvent.emit(this.tableInfo);
   }
 }

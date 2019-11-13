@@ -48,4 +48,11 @@ export class TablesviewComponent implements OnInit, AfterViewInit {
     this.overlayService.showEntityCreationOverlay(TableCreateComponent, null, this.tables, this.viewContainerRef);
   }
 
+  onTableDeleted(table: Table) {
+    const index = this.tables.indexOf(table);
+    if (index > -1) {
+      this.tables.splice(index, 1);
+    }
+  }
+
 }

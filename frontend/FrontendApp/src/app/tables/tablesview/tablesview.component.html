@@ -3,6 +3,8 @@
 </div>
 <div class="tables" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
     <div class="singleTable" *ngFor="let table of tables" cdkDrag>
-        <app-table [tableInfo]="table" [connectedLists]="dropListNames"></app-table>
+        <div *ngIf="tables.includes(table)"> 
+                <app-table [tableInfo]="table" [connectedLists]="dropListNames" (tableDestroyedEvent)="onTableDeleted($event)"></app-table>
+        </div>        
     </div>
 </div>
