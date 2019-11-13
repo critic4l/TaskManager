@@ -30,7 +30,7 @@ export class TablesviewComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.tablesViewChildren.changes.subscribe(
       () => { this.initDropListNames(); }
-    )
+    );
   }
 
   drop(event: CdkDragDrop<string[]>) {
