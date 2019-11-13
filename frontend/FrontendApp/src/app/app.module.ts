@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverlayServiceService } from './shared/services/overlay-service.service';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { TablesModule } from './tables/tables.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TablesModule } from './tables/tables.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    TablesModule
+    TablesModule,
+    MatButtonModule,
   ],
   providers: [
     OverlayServiceService

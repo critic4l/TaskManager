@@ -1,1 +1,15 @@
-<p>table-create works!</p>
+<div class="window">
+    <div class="window-title">
+        CREATE NEW TABLE
+    </div>
+    <form (ngSubmit)="createEntity(taskForm)" #taskForm="ngForm">
+        <div class="window-content">
+            <input name="taskTitle" ngModel required minlength="3">
+            <textarea name="taskDescription" ngModel></textarea>
+        </div>
+        <div class="window-controls">
+            <button mat-button class="createButton">CREATE</button>
+        </div>
+    </form>
+    
+</div>
