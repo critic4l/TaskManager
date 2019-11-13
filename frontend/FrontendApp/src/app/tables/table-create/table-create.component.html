@@ -4,8 +4,8 @@
     </div>
     <form (ngSubmit)="createEntity(taskForm)" #taskForm="ngForm">
         <div class="window-content">
-            <input name="taskTitle" ngModel required minlength="3">
-            <textarea name="taskDescription" ngModel></textarea>
+            <input name="tableName" ngModel required minlength="3">
+            <textarea name="tableDescription" ngModel></textarea>
         </div>
         <div class="window-controls">
             <button mat-button class="createButton">CREATE</button>

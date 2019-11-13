@@ -19,7 +19,7 @@ export class TableCreateComponent extends EntityCreateComponent {
   protected createEntity(form: NgForm): void {
     const tableToCreate = new Table(form.value.tableName, form.value.tableDescription);
     this.service.createTable(tableToCreate).subscribe(
-      (res) => { this.createEntityEvent.emit(tableToCreate); },
+      (res) => { this.createEntityEvent.emit(res); },
       (err) => { console.log(err); },
     );
   }

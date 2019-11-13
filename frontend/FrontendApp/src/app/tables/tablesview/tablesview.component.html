@@ -2,7 +2,7 @@
     <Button class="button" (click)="addNewTable()">XD</Button>
 </div>
 <div class="tables" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
-    <div class="singleTable" *ngFor="let table of tables; let i = index" cdkDrag>
+    <div class="singleTable" *ngFor="let table of tables" cdkDrag>
         <app-table [tableInfo]="table" [connectedLists]="dropListNames"></app-table>
     </div>
 </div>

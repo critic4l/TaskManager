@@ -22,7 +22,7 @@ export class TaskCreateComponent extends EntityCreateComponent {
   protected createEntity(form: NgForm): void {
     const taskToCreate = new Task(form.value.taskTitle, form.value.taskDescription, this.table);
     this.service.createTask(taskToCreate).subscribe(
-      (res) => { this.createEntityEvent.emit(taskToCreate); },
+      (res) => { this.createEntityEvent.emit(res); },
       (err) => { console.log(err); },
     );
   }

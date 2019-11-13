@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewContainerRef, Injector, ReflectiveInjector } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef, Injector, ReflectiveInjector, AfterContentChecked } from '@angular/core';
 import { TablesService } from '../tables.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Table } from '../classes/table';
@@ -12,7 +12,7 @@ import { OverlayServiceService } from 'src/app/shared/services/overlay-service.s
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterContentChecked {
 
 
   constructor(private tableService: TablesService,
@@ -29,6 +29,10 @@ export class TableComponent implements OnInit {
   connectedLists: string[];
 
   res;
+
+  ngAfterContentChecked() {
+
+  }
 
   ngOnInit() {
     this.tableService.getTasksFromTable(this.tableInfo.id).subscribe(

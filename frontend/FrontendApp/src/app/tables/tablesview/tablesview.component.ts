@@ -23,7 +23,6 @@ export class TablesviewComponent implements OnInit {
   ngOnInit() {
     this.tables = this.route.snapshot.data.getAllTables;
     this.initDropListNames();
-    console.log(this.dropListNames);
   }
 
   drop(event: CdkDragDrop<string[]>) {
