@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ViewChildren, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Table } from '../classes/table';
@@ -11,10 +11,12 @@ import { TableCreateComponent } from '../table-create/table-create.component';
   templateUrl: './tablesview.component.html',
   styleUrls: ['./tablesview.component.css']
 })
-export class TablesviewComponent implements OnInit {
+export class TablesviewComponent implements OnInit, AfterViewInit {
 
   protected tables: Table[];
   protected dropListNames: string[] = [];
+
+  @ViewChildren('tables') tablesViewChildren;
 
   constructor(private route: ActivatedRoute,
               private overlayService: OverlayServiceService,
@@ -23,6 +25,12 @@ export class TablesviewComponent implements OnInit {
   ngOnInit() {
     this.tables = this.route.snapshot.data.getAllTables;
     this.initDropListNames();
+  }
+
+  ngAfterViewInit(): void {
+    this.tablesViewChildren.changes.subscribe(
+      () => { this.initDropListNames(); }
+    )
   }
 
   drop(event: CdkDragDrop<string[]>) {
