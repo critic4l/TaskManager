@@ -27,4 +27,10 @@ export class TablesService {
     const URL = this.URL + '/createTable';
     return this.http.post(URL, table);
   }
+
+  deleteTable(table: Table): Observable<any> {
+    const URL = this.URL + '/deleteTable?id=' + table.id;
+    console.log(URL);
+    return this.http.delete(URL);
+  }
 }

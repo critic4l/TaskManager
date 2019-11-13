@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewContainerRef, Injector, ReflectiveInjector, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef, Injector, ReflectiveInjector, AfterContentChecked, ComponentFactoryResolver } from '@angular/core';
 import { TablesService } from '../tables.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Table } from '../classes/table';
@@ -79,4 +79,7 @@ export class TableComponent implements OnInit, AfterContentChecked {
     );
   }
 
+  removeTable() {
+    this.tableService.deleteTable(this.tableInfo);
+  }
 }

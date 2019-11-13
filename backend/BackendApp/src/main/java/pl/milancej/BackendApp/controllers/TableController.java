@@ -11,6 +11,7 @@ import pl.milancej.BackendApp.repositories.TableRepository;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "/table")
 public class TableController {
 
