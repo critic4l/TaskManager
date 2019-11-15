@@ -1,8 +1,8 @@
 <div class="tables-controls">
-    <Button class="button" (click)="addNewTable()">XD</Button>
+    <button mat-button (click)="addNewTable()" class="new-table-button--color">Create new table</button>
 </div>
 <div class="tables" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
-    <div class="singleTable" *ngFor="let table of tables" cdkDrag>
+    <div class="single-table" *ngFor="let table of tables" cdkDrag>
         <div *ngIf="tables.includes(table)"> 
                 <app-table [tableInfo]="table" [connectedLists]="dropListNames" (tableDestroyedEvent)="onTableDeleted($event)"></app-table>
         </div>        

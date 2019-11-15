@@ -1,23 +1,32 @@
 .table {
   min-width: 320px;
-  background-color: burlywood;
+  background-color: #fdc381;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
 }
 
 .table-content {
   flex: 1;
   min-height: 50px;
-  background-color: rgb(189, 157, 115);
+  background-color: #daa86f;
   border-radius: 5px;
+}
+
+.table-name {
+  text-align: center;
 }
 
 
 .item-margin {
-  margin: 5px 10px;
+  margin: 5px 5px;
 }
 
-.table-controls:hover {
+.table-controls__new-task  {
+  float: left;
+}
+
+.table-controls__new-task:hover {
   text-decoration: underline;
 }
 
@@ -38,4 +47,12 @@
 
 .tables.cdk-drop-list-dragging .singleItem:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 0.5);
+}
+
+.table-controls__remove-table {
+  float: right;
+}
+
+mat-icon {
+  vertical-align: middle;
 }

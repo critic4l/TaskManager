@@ -14,6 +14,8 @@ import { TableCreateComponent } from './table-create/table-create.component';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { MatButtonModule } from '@angular/material/button';
     TasksModule,
     FormsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
   ],
   providers: [
     TablesService,

@@ -9,6 +9,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { TablesModule } from './tables/tables.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
     TablesModule,
     MatButtonModule,
     MatInputModule,
+    MatIconModule
   ],
   providers: [
     OverlayServiceService
