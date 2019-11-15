@@ -12,6 +12,8 @@ import { TasksModule } from '../tasks/tasks.module';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { TableCreateComponent } from './table-create/table-create.component';
 import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     DragDropModule,
     TasksModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [
     TablesService,

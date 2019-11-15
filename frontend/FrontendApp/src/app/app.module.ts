@@ -8,6 +8,7 @@ import { OverlayServiceService } from './shared/services/overlay-service.service
 import { OverlayModule } from '@angular/cdk/overlay';
 import { TablesModule } from './tables/tables.module';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     TablesModule,
     MatButtonModule,
+    MatInputModule,
   ],
   providers: [
     OverlayServiceService

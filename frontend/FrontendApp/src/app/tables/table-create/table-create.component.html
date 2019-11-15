@@ -1,15 +1,18 @@
 <div class="window">
     <div class="window-title">
-        CREATE NEW TABLE
+        Create new table
     </div>
-    <form (ngSubmit)="createEntity(taskForm)" #taskForm="ngForm">
-        <div class="window-content">
-            <input name="tableName" ngModel required minlength="3">
-            <textarea name="tableDescription" ngModel></textarea>
-        </div>
-        <div class="window-controls">
-            <button mat-button class="createButton">CREATE</button>
-        </div>
-    </form>
-    
+    <div class="window-content">
+        <form (ngSubmit)="createEntity(taskForm)" #taskForm="ngForm">
+            <mat-form-field class="input-field--size">
+                <input matInput name="tableName" ngModel required minlength="3" placeholder="Table name" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field class="input-field--size">
+                <textarea matInput name="tableDescription" ngModel placeholder="Table description"></textarea>
+            </mat-form-field>
+            <div class="window-controls">
+                <button mat-button class="create-button" [disabled]="!taskForm.valid">CREATE</button>
+            </div>
+        </form>
+    </div>
 </div>
