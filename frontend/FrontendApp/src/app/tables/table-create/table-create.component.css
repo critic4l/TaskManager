@@ -9,16 +9,16 @@
     align-items: center;
 }
 
-.window-title {
+.window__title {
     padding: 5% 2%;
 }
 
-.window-content {
+.window__content {
     margin: 5%;
     flex: 1; 
 }
 
-.window-controls {
+.window__controls {
     margin-left: auto;
     justify-self: end;
     float: right;
