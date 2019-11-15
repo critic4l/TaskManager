@@ -83,7 +83,10 @@ export class TableComponent implements OnInit, AfterContentChecked {
   }
 
   removeTable() {
-    this.tableService.deleteTable(this.tableInfo);
-    this.tableDestroyedEvent.emit(this.tableInfo);
+    this.tableService.deleteTable(this.tableInfo).subscribe(
+      (res) => { this.tableDestroyedEvent.emit(this.tableInfo); },
+      (err) => { console.log(err); }
+    );
+    //
   }
 }
