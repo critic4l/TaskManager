@@ -19,9 +19,9 @@ export class TableComponent implements OnInit, AfterContentChecked {
   tableDestroyedEvent: EventEmitter<any> = new EventEmitter();
 
   constructor(private tableService: TablesService,
-              private taskService: TaskService,
-              private overlayService: OverlayServiceService,
-              private viewContainerRef: ViewContainerRef) { }
+    private taskService: TaskService,
+    private overlayService: OverlayServiceService,
+    private viewContainerRef: ViewContainerRef) { }
 
 
 
@@ -31,7 +31,7 @@ export class TableComponent implements OnInit, AfterContentChecked {
   @Input()
   connectedLists: string[];
 
-  res;
+  tasks: Task[];
 
   ngAfterContentChecked() {
 
@@ -40,7 +40,7 @@ export class TableComponent implements OnInit, AfterContentChecked {
   ngOnInit() {
     this.tableService.getTasksFromTable(this.tableInfo.id).subscribe(
       (res) => {
-        this.res = res[0];
+        this.tasks = res[0];
       },
       (err) => { console.log(err); },
     );
@@ -53,9 +53,9 @@ export class TableComponent implements OnInit, AfterContentChecked {
     } else {
       this.updateTaskTable(event.item.data, tableInfo);
       transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
     }
   }
 
@@ -71,7 +71,7 @@ export class TableComponent implements OnInit, AfterContentChecked {
       }
     ]);
 
-    this.overlayService.showEntityCreationOverlay(TaskCreateComponent, injector, this.res, this.viewContainerRef);
+    this.overlayService.showEntityCreationOverlay(TaskCreateComponent, injector, this.tasks, this.viewContainerRef);
   }
 
   updateTaskTable(task: Task, table: Table) {
@@ -87,6 +87,18 @@ export class TableComponent implements OnInit, AfterContentChecked {
       (res) => { this.tableDestroyedEvent.emit(this.tableInfo); },
       (err) => { console.log(err); }
     );
-    //
+  }
+
+  deleteTask(task: Task) {
+    this.taskService.deleteTask(task).subscribe(
+      (res) => {
+        const index = this.tasks.indexOf(task);
+        if (index > -1) {
+          this.tasks.splice(index, 1);
+        }
+      },
+      (err) => { console.log(err); }
+    );
+
   }
 }

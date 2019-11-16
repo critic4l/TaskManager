@@ -4,9 +4,11 @@
     </div>
     <div class="table-content item-margin" id="{{tableInfo.id}}" cdkDropList cdkDropListOrientation="vertical"
         (cdkDropListDropped)="drop($event, tableInfo)" [cdkDropListConnectedTo]="connectedLists"
-        [cdkDropListData]="res">
-        <div class="table-item item-margin" *ngFor="let task of res" cdkDrag [cdkDragData]="task">
-            <app-task [task]="task"></app-task>
+        [cdkDropListData]="tasks">
+        <div class="table-item item-margin" *ngFor="let task of tasks" cdkDrag [cdkDragData]="task">
+            <div *ngIf="tasks.includes(task)">
+                <app-task [task]="task" (removeTaskEvent)="deleteTask($event)"></app-task>
+            </div>
         </div>
     </div>
     <div class="table-controls item-margin">
@@ -14,7 +16,8 @@
             Add new task
         </div>
         <div class="table-controls__remove-table" (click)="removeTable()">
-            <mat-icon aria-hidden="false" aria-label="delete table icon" matTooltip="Delete table" class="mat-icon-delete">remove_circle_outline</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="delete table icon" matTooltip="Delete table"
+                class="mat-icon-delete">remove_circle_outline</mat-icon>
         </div>
     </div>
 </div>

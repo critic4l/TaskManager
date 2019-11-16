@@ -20,4 +20,9 @@ export class TaskService {
     const URL = this.URL + '/createTask';
     return this.http.post(URL, task);
   }
+
+  deleteTask(task: Task) {
+    const URL = this.URL + '/deleteTask?id=' + task.id;
+    return this.http.delete(URL);
+  }
 }
