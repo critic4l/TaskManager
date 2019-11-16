@@ -1,6 +1,6 @@
 .table {
   min-width: 320px;
-  background-color: #fdc381;
+  background-color: #2dabff;
   display: flex;
   flex-direction: column;
   border-radius: 5px;
@@ -10,7 +10,7 @@
 .table-content {
   flex: 1;
   min-height: 50px;
-  background-color: #daa86f;
+  background-color: #207ebd;
   border-radius: 5px;
 }
 
@@ -59,9 +59,9 @@
 
 mat-icon {
   vertical-align: middle;
-  color: #916f4a; 
+  color: #0069af; 
 }
 
 mat-icon:hover {
-  color: #ff0000;
+  color: #920000;
 }

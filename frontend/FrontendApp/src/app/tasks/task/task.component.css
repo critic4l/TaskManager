@@ -1,5 +1,5 @@
 .task {
-  background-color: #eedfc6;
+  background-color: #ebebeb;
   height: 30px;
   border-radius: 5px;
   display: flex;
@@ -22,5 +22,5 @@ mat-icon {
 }
 
 mat-icon:hover {
-  color: #ff0000;
+  color: #920000;
 }
