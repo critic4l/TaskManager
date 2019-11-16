@@ -12,6 +12,8 @@
   min-height: 50px;
   background-color: #207ebd;
   border-radius: 5px;
+  max-height: 50vh;
+  overflow-y: auto;
 }
 
 .table-name {
@@ -64,4 +66,17 @@ mat-icon {
 
 mat-icon:hover {
   color: #920000;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #003c64; 
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #132b3b; 
 }
