@@ -77,7 +77,7 @@ export class TableComponent implements OnInit, AfterContentChecked {
   updateTaskTable(task: Task, table: Table) {
     task.table = table;
     this.taskService.updateTask(task).subscribe(
-      (res) => { console.log(res); },
+      (res) => { },
       (err) => { console.log(err); },
     );
   }

@@ -1,3 +1,8 @@
 <div class="task item-margin">
-    {{ task.title }}
+    <div class="task__title">
+        {{ task.title }}
+    </div>
+    <div class="task__remove" (click)="removeTask()">
+        <mat-icon aria-hidden="false" aria-label="delete task icon" matTooltip="Delete task">close</mat-icon>
+    </div>
 </div>

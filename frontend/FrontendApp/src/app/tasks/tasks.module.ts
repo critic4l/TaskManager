@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     HttpClientModule,
     FormsModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   exports: [
     TaskComponent,

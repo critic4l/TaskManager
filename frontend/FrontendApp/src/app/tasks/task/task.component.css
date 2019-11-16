@@ -1,5 +1,26 @@
 .task {
-  background-color: cadetblue;
+  background-color: #eedfc6;
   height: 30px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.task__title {
+  margin: auto 5px;
+}
+
+.task__remove {
+  justify-self: flex-end;
+  margin-left: auto;
+}
+
+mat-icon {
+  vertical-align: middle;
+  color: #916f4a; 
+}
+
+mat-icon:hover {
+  color: #ff0000;
 }

@@ -22,8 +22,10 @@
   margin: 5px 5px;
 }
 
-.table-controls__new-task  {
-  float: left;
+.table-controls {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
 
 .table-controls__new-task:hover {
@@ -50,9 +52,15 @@
 }
 
 .table-controls__remove-table {
-  float: right;
+  justify-self: flex-end;
+  margin-left: auto;
 }
 
 mat-icon {
   vertical-align: middle;
+  color: #916f4a; 
+}
+
+mat-icon:hover {
+  color: #ff0000;
 }
