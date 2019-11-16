@@ -1,7 +1,7 @@
 .window {
     height: 60vh;
     width: 60vw;
-    background-color: cornsilk;
+    background-color: #ebebeb;
     border-radius: 10px;
     user-select: none;
     display: flex;
@@ -9,36 +9,31 @@
     align-items: center;
 }
 
-.window-title {
+.window__title {
     padding: 5% 2%;
 }
 
-.window-content {
-    flex: 1;
+.window__content {
+    margin: 5%;
+    flex: 1; 
 }
 
-.window-controls {
+.window__controls {
     margin-left: auto;
     justify-self: end;
-    padding: 5%;
+    float: right;
 }
 
-.mat-spinner circle {
-    stroke: #ffffff;
-  }
-
-.createButton {
-    background-color:#59d179;
-    color:#ffffff;
-}
-.createButton:hover {
-	background-color:#5cbf2a;
-}
-.createButton:active {
-	position:relative;
-	top:1px;
+.create-button {
+    background-color: #59d179;
+    color: #ffffff;
 }
 
-.createButton:focus {
-    outline: 0;
+textarea {
+    resize: none !important;
+    min-height: 150px;
+}
+
+.input-field--size {
+    width: 100%;
 }

@@ -1,15 +1,19 @@
 <div class="window">
-    <div class="window-title">
-        CREATE NEW TASK IN TABLE: {{table.name}}
+    <div class="window__title">
+        Create new task in {{table.name}} table
     </div>
     <form (ngSubmit)="createEntity(taskForm)" #taskForm="ngForm">
-        <div class="window-content">
-            <input name="taskTitle" ngModel required minlength="3">
-            <textarea name="taskDescription" ngModel></textarea>
+        <div class="window__content">
+            <mat-form-field class="input-field--size">
+                <input matInput name="taskTitle" ngModel required minlength="3" placeholder="Task title" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field class="input-field--size">
+                <textarea matInput name="taskDescription" ngModel placeholder="Task description"></textarea>
+            </mat-form-field>
         </div>
-        <div class="window-controls">
-            <button mat-button class="createButton">CREATE</button>
+        <div class="window__controls">
+            <button mat-button class="create-button" [disabled]="!taskForm.valid">CREATE</button>
         </div>
     </form>
-    
+
 </div>

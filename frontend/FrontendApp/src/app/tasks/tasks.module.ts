@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     HttpClientModule,
     FormsModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatInputModule,
+    MatButtonModule
   ],
   exports: [
     TaskComponent,
